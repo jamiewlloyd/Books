@@ -13,8 +13,35 @@
 <body>
    <header id="header">
       <h1 id="logo">SERVING BOOKS</h1>
-      <button id="add">Add A Book</button>
+      <button id="add-book">Add A Book</button>
    </header>
+   <dialog id="book-dialog">
+      <h1>Book Info</h1>
+      <form action="" id="book-form">
+         <fieldset>
+            <label for="title">Title:</label>
+            <input type="text" id="title" placeholder="">
+         </fieldset>
+         <fieldset>
+            <label for="author">Author:</label>
+            <input type="text" id="author" placeholder="">
+         </fieldset>
+         <fieldset>
+            <label for="published">Year:</label>
+            <input type="text" id="published" placeholder="">
+         </fieldset>
+         <fieldset>
+            <label for="have-read">Have you read it?:</label>
+            <select name="have-read" id="have-read">
+               <option value="q1">No</option>
+               <option value="q2">Yes</option>
+            </select>
+         </fieldset>
+
+         <button type="submit">Add</button>
+         <button id="cancel-button">Cancel</button>
+      </form>
+   </dialog>
    <div id="main-container"></div>
    <script type="text/javascript" src="js/script.js"></script>
 </body>
