@@ -36,6 +36,7 @@
    border: 1px solid black;
    border-radius: 4px;
    padding: 15px;
+   position: relative;
 }
 
 body,
@@ -81,4 +82,25 @@ dialog {
    cursor: pointer;
    border: 0px;
    border-radius: 4px;
+}
+
+.status {
+   position: absolute;
+   width: 75px;
+   height: 35px;
+   top: 280px;
+   display: grid;
+   align-items: center;
+   justify-items: center;
+   border-radius: 4px;
+   font-weight: 800;
+   color: rgba(0, 0, 0, 0.652);
+}
+
+.read {
+   background-color: rgb(215, 244, 196);
+}
+
+.unread {
+   background-color: rgb(243, 198, 198);
 }

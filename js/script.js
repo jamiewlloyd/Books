@@ -38,18 +38,31 @@ function createBook(book) {
    const title = document.createElement("h2");
    const author = document.createElement("h3");
    const published = document.createElement("h4");
+   const readStatus = document.createElement("div");
+
    card.classList.add("card");
    title.classList.add("title");
    author.classList.add("author");
    published.classList.add("published");
+   readStatus.classList.add("status");
 
    title.textContent = book.title.toString();
    author.textContent = book.author.toString();
    published.textContent = book.published.toString();
 
+   console.log(book.read);
+
+   if (book.read.toString() === 'yes') {
+      readStatus.textContent = 'Read';
+      readStatus.classList.add("read");
+   } else {
+      readStatus.textContent = 'Unread';
+      readStatus.classList.add("unread");
+   }
+
    card.setAttribute("data-index-number", book.id);
 
-   card.append(title, author, published);
+   card.append(title, author, published, readStatus);
    container.appendChild(card);
 }
 
