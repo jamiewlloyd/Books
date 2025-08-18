@@ -34,21 +34,27 @@ function displayBooks() {
 }
 
 function createBook(book) {
+   // Create elements
    const card = document.createElement("div");
    const title = document.createElement("h2");
    const author = document.createElement("h3");
    const published = document.createElement("h4");
    const readStatus = document.createElement("div");
+   const deleteButton = document.createElement("div");
 
+   // Add class lists
    card.classList.add("card");
    title.classList.add("title");
    author.classList.add("author");
    published.classList.add("published");
    readStatus.classList.add("status");
+   deleteButton.classList.add("delete-button");
 
+   // Add text content
    title.textContent = book.title.toString();
    author.textContent = book.author.toString();
    published.textContent = book.published.toString();
+   deleteButton.textContent = "X";
 
    if (book.read.toString() === 'yes') {
       readStatus.textContent = 'Read';
@@ -57,6 +63,32 @@ function createBook(book) {
       readStatus.textContent = 'Unread';
       readStatus.classList.add("unread");
    }
+
+   // Add event listeners
+   card.addEventListener("click", (e) => {
+      const mainCard = e.currentTarget;
+      const mainDelete = mainCard.firstElementChild;
+      const displayedBooks = Array.from(document.querySelectorAll('.card'))
+
+      if (!e.target.classList.contains('status')) {
+         displayedBooks.forEach((book) => {
+            id = book.getAttribute("data-index-number");
+            del = book.firstChild;
+
+            if (id != mainCard.getAttribute("data-index-number") && (book.firstChild.classList.contains("delete-peek"))) {
+               book.firstChild.classList.toggle('delete-peek');
+            }
+         })
+
+         mainDelete.classList.add("delete-peek");
+      };
+   });
+
+   deleteButton.addEventListener("click", (e) => {
+      const card = e.currentTarget.parentNode;
+
+      card.remove();
+   });
 
    readStatus.addEventListener("click", (e) => {
       e.target.classList.toggle("read");
@@ -67,13 +99,13 @@ function createBook(book) {
       } else {
          e.target.textContent = 'Unread';
       }
-      console.log(e.target.parentNode);
-
    });
 
+   // Set id attribute
    card.setAttribute("data-index-number", book.id);
 
-   card.append(title, author, published, readStatus);
+   // Append items and append card to DOM
+   card.append(deleteButton, title, author, published, readStatus);
    container.appendChild(card);
 }
 
@@ -104,3 +136,4 @@ cancelButton.addEventListener("click", (e) => {
 
 //Page Load
 displayBooks();
+console.log(myLibrary);
