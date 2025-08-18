@@ -75,12 +75,23 @@ function createBook(book) {
             id = book.getAttribute("data-index-number");
             del = book.firstChild;
 
-            if (id != mainCard.getAttribute("data-index-number") && (book.firstChild.classList.contains("delete-peek"))) {
-               book.firstChild.classList.toggle('delete-peek');
+            if (id != mainCard.getAttribute("data-index-number") && (book.firstChild.classList.contains("active"))) {
+               book.firstChild.style.zIndex = '-1';
+               setTimeout(() => {
+                  book.firstChild.classList.toggle('active');
+               }, 10);
             }
          })
 
-         mainDelete.classList.add("delete-peek");
+         mainDelete.classList.add("active");
+
+         mainDelete.addEventListener('transitionend', (event) => {
+            if (event.propertyName === 'transform') {
+               if (mainDelete.classList.contains('active')) {
+                  mainDelete.style.zIndex = '10';
+               }
+            }
+         });
       };
    });
 
