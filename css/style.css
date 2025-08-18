@@ -95,6 +95,7 @@ dialog {
    border-radius: 4px;
    font-weight: 800;
    color: rgba(0, 0, 0, 0.652);
+   cursor: pointer;
 }
 
 .read {

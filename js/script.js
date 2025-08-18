@@ -50,8 +50,6 @@ function createBook(book) {
    author.textContent = book.author.toString();
    published.textContent = book.published.toString();
 
-   console.log(book.read);
-
    if (book.read.toString() === 'yes') {
       readStatus.textContent = 'Read';
       readStatus.classList.add("read");
@@ -59,6 +57,19 @@ function createBook(book) {
       readStatus.textContent = 'Unread';
       readStatus.classList.add("unread");
    }
+
+   readStatus.addEventListener("click", (e) => {
+      e.target.classList.toggle("read");
+      e.target.classList.toggle("unread");
+
+      if (e.target.classList.contains("read")) {
+         e.target.textContent = 'Read';
+      } else {
+         e.target.textContent = 'Unread';
+      }
+      console.log(e.target.parentNode);
+
+   });
 
    card.setAttribute("data-index-number", book.id);
 
