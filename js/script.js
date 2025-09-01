@@ -5,15 +5,14 @@ const dialog = document.querySelector('#book-dialog');
 const bookForm = document.querySelector('#book-form');
 const cancelButton = document.querySelector("#cancel-button");
 
-function Book(title, author, published, read) {
-   if (!new.target) {
-      throw Error("You must use the 'new' operator to call the constructor");
+class Book {
+   constructor(title, author, published, read) {
+      this.title = title;
+      this.author = author;
+      this.published = published;
+      this.read = read;
+      this.id = crypto.randomUUID();
    }
-   this.title = title;
-   this.author = author;
-   this.published = published;
-   this.read = read;
-   this.id = crypto.randomUUID();
 }
 
 function addBookToLibrary(title, author, published, read) {
